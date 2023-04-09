@@ -2,6 +2,7 @@
 import random
 
 class Process:
+    #intialize the attributes of an object
     def __init__(self, pid, arrival_time, burst_time):
         self.pid = pid
         self.arrival_time = arrival_time
@@ -45,15 +46,16 @@ def simulate_round_robin(processes, time_quantum, total_time):
 def print_results(processes):
     total_waiting_time = 0
     total_turnaround_time = 0
-    print("PID\tArrival Time\tBurst Time\tFinish Time\tWaiting Time")
+    print("PID\tArrival Time\tBurst Time\tWaiting Time")
     for process in processes:
         total_waiting_time += process.waiting_time
         total_turnaround_time += process.waiting_time + process.burst_time
-        print(f"{process.pid}\t{process.arrival_time}\t\t{process.burst_time}\t\t{process.finish_time}\t\t{process.waiting_time}")
+        print(f"{process.pid}\t{process.arrival_time}\t\t{process.burst_time}\t\t{process.waiting_time}")
+    print("Time Quantum: 3")
     print(f"Average waiting time: {total_waiting_time/len(processes):.2f}")
     print(f"Average turnaround time: {total_turnaround_time/len(processes):.2f}")
 
 # Example usage
 processes = generate_processes(5, 10)
-simulate_round_robin(processes, 2, 20)
+simulate_round_robin(processes, 3, 40)
 print_results(processes)
